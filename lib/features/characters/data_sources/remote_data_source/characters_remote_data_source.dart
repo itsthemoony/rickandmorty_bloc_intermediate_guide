@@ -1,0 +1,12 @@
+import 'package:fpdart/fpdart.dart';
+import 'package:rickandmorty_bloc_intermediate_guide/features/characters/models/character.dart';
+
+import '../../bloc/characters_bloc.dart';
+
+abstract class CharactersRemoteDataSource {
+  Future<Either<CharactersStatus, List<Character>>> getAllCharacters(
+      int pageIndex);
+
+  Future<Either<CharactersStatus, Character>> getCharacterDetail(
+      {required Character character});
+}
