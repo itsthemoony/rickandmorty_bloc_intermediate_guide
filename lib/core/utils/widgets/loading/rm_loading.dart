@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:rickandmorty_bloc_intermediate_guide/constants/constants.dart';
-import 'package:rickandmorty_bloc_intermediate_guide/utils/widgets/appbar/rm_appbar.dart';
+import 'package:rickandmorty_bloc_intermediate_guide/core/utils/constants/constants.dart';
+import 'package:rickandmorty_bloc_intermediate_guide/core/utils/widgets/appbar/rm_appbar.dart';
 
 class RMLoading extends StatelessWidget {
   final String? title;

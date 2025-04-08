@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rickandmorty_bloc_intermediate_guide/constants/constants.dart';
+import 'package:rickandmorty_bloc_intermediate_guide/core/utils/constants/constants.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/features/characters/widgets/rm_characters_card.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/features/locations/bloc/locations_bloc.dart';
-import 'package:rickandmorty_bloc_intermediate_guide/utils/widgets/failed/rm_failed.dart';
-import 'package:rickandmorty_bloc_intermediate_guide/utils/widgets/boxs/rm_header_box.dart';
-import 'package:rickandmorty_bloc_intermediate_guide/utils/widgets/loading/rm_loading.dart';
-import '../../../utils/widgets/appbar/rm_appbar.dart';
+import 'package:rickandmorty_bloc_intermediate_guide/core/utils/widgets/failed/rm_failed.dart';
+import 'package:rickandmorty_bloc_intermediate_guide/core/utils/widgets/boxs/rm_header_box.dart';
+import 'package:rickandmorty_bloc_intermediate_guide/core/utils/widgets/loading/rm_loading.dart';
+import '../../../core/utils/widgets/appbar/rm_appbar.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/injection_container.dart'
     as di;
 

@@ -1,10 +1,12 @@
 import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:fpdart/src/either.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/features/characters/models/character.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/features/episodes/data_sources/remote_data_sources/episodes_remote_date_source.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/features/episodes/models/episode.dart';
-import '../../../../constants/urls/rm_urls.dart';
+
+import '../../../../core/utils/constants/urls/rm_urls.dart';
 import '../../bloc/episodes_bloc.dart';
 
 class EpisodesRemoteDataSourceImp extends EpisodesRemoteDataSource {

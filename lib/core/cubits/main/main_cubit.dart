@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-import '../../config/theme/themes.dart';
+import '../../utils/config/theme/themes.dart';
 part 'main_state.dart';
 
 class MainCubit extends HydratedCubit<MainState> {

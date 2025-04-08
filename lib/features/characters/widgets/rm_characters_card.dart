@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rickandmorty_bloc_intermediate_guide/constants/constants.dart';
+import 'package:rickandmorty_bloc_intermediate_guide/core/utils/constants/constants.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/features/characters/models/character.dart';
 
 class RMCharactersCard extends StatelessWidget {

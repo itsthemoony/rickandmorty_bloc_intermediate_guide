@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/features/locations/bloc/locations_bloc.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/features/locations/models/location.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/features/locations/screens/locations_detail_screen.dart';
-import 'package:rickandmorty_bloc_intermediate_guide/utils/widgets/boxs/rm_order_number_box.dart';
-import '../../../constants/constants.dart';
+import 'package:rickandmorty_bloc_intermediate_guide/core/utils/widgets/boxs/rm_order_number_box.dart';
+import '../../../core/utils/constants/constants.dart';
 
 class RMLocationsCard extends StatelessWidget {
   final int index;

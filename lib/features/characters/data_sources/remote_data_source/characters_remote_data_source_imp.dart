@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:fpdart/fpdart.dart';
-import 'package:rickandmorty_bloc_intermediate_guide/constants/urls/rm_urls.dart';
+import 'package:rickandmorty_bloc_intermediate_guide/core/utils/constants/urls/rm_urls.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/features/characters/bloc/characters_bloc.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/features/characters/data_sources/remote_data_source/characters_remote_data_source.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/features/characters/models/character.dart';

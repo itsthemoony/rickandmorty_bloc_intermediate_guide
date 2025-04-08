@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rickandmorty_bloc_intermediate_guide/constants/constants.dart';
-import 'package:rickandmorty_bloc_intermediate_guide/cubits/main/main_cubit.dart';
+import 'package:rickandmorty_bloc_intermediate_guide/core/utils/constants/constants.dart';
+import 'package:rickandmorty_bloc_intermediate_guide/core/cubits/main/main_cubit.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/features/characters/screens/characters_screen.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/features/episodes/screens/episodes_screen.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/features/locations/screens/locations_screen.dart';

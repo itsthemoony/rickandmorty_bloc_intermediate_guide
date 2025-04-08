@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rickandmorty_bloc_intermediate_guide/constants/icons/rm_icons.dart';
+import 'package:rickandmorty_bloc_intermediate_guide/core/utils/constants/icons/rm_icons.dart';
 
 class RmFloatingActionButton extends StatelessWidget {
   final ScrollController scrollController;

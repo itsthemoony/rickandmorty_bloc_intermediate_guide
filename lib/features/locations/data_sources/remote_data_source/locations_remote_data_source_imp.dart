@@ -4,7 +4,7 @@ import 'package:fpdart/fpdart.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/features/characters/models/character.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/features/locations/data_sources/remote_data_source/locations_remote_data_source.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/features/locations/models/location.dart';
-import '../../../../constants/urls/rm_urls.dart';
+import '../../../../core/utils/constants/urls/rm_urls.dart';
 import '../../bloc/locations_bloc.dart';
 
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../constants/constants.dart';
+import '../../constants/constants.dart';
 
 class RmFailed extends StatelessWidget {
   const RmFailed({super.key});

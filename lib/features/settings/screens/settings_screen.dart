@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rickandmorty_bloc_intermediate_guide/cubits/main/main_cubit.dart';
-import '../../../constants/constants.dart';
-import '../../../utils/widgets/texts/rm_header.dart';
+import 'package:rickandmorty_bloc_intermediate_guide/core/cubits/main/main_cubit.dart';
+import '../../../core/utils/constants/constants.dart';
+import '../../../core/utils/widgets/texts/rm_header.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});

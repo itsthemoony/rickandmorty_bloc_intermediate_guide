@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
-import 'package:rickandmorty_bloc_intermediate_guide/cubits/main/main_cubit.dart';
+import 'package:rickandmorty_bloc_intermediate_guide/core/cubits/main/main_cubit.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/features/characters/bloc/characters_bloc.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/features/characters/data_sources/remote_data_source/characters_remote_data_source.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/features/characters/data_sources/remote_data_source/characters_remote_data_source_imp.dart';

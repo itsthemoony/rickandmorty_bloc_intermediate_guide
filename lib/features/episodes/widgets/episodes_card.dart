@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/features/episodes/bloc/episodes_bloc.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/features/episodes/screens/episodes_detail_screen.dart';
-import '../../../constants/constants.dart';
-import '../../../utils/widgets/boxs/rm_order_number_box.dart';
+import '../../../core/utils/constants/constants.dart';
+import '../../../core/utils/widgets/boxs/rm_order_number_box.dart';
 
 class EpisodesCard extends StatelessWidget {
   final int index;
