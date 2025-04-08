@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rickandmorty_bloc_intermediate_guide/features/episodes/models/episode.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/core/utils/widgets/appbar/rm_appbar.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/core/utils/widgets/failed/rm_failed.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/core/utils/widgets/loading/rm_loading.dart';
+import 'package:rickandmorty_bloc_intermediate_guide/features/episodes/models/episode.dart';
+import 'package:rickandmorty_bloc_intermediate_guide/injection_container.dart'
+    as di;
+
 import '../../../core/utils/constants/constants.dart';
 import '../../../core/utils/widgets/boxs/rm_header_box.dart';
 import '../../characters/widgets/rm_characters_card.dart';
 import '../bloc/episodes_bloc.dart';
-import 'package:rickandmorty_bloc_intermediate_guide/injection_container.dart'
-    as di;
 
 class EpisodesDetailScreen extends StatefulWidget {
   final int id;
@@ -20,13 +21,7 @@ class EpisodesDetailScreen extends StatefulWidget {
 }
 
 class _EpisodesDetailScreenState extends State<EpisodesDetailScreen> {
-  late ScrollController _scrollController;
-
-  @override
-  void initState() {
-    _scrollController = ScrollController();
-    super.initState();
-  }
+  final ScrollController _scrollController = ScrollController();
 
   @override
   void dispose() {
@@ -42,7 +37,7 @@ class _EpisodesDetailScreenState extends State<EpisodesDetailScreen> {
         builder: (context, state) {
           final episodeDetail = state.episodes[widget.id];
           switch (state.status) {
-            case EpisodesStatus.loading:
+            case EpisodesStatus.detailLoading:
               return RMLoading(title: state.episodes[widget.id].name);
 
             case EpisodesStatus.loaded:
@@ -52,7 +47,7 @@ class _EpisodesDetailScreenState extends State<EpisodesDetailScreen> {
               return const RmFailed();
 
             default:
-              return const SizedBox();
+              return body(state, episodeDetail);
           }
         },
       ),

@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rickandmorty_bloc_intermediate_guide/features/locations/bloc/locations_bloc.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/core/utils/widgets/buttons/rm_floating_action_button.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/core/utils/widgets/failed/rm_failed.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/core/utils/widgets/loading/rm_loading.dart';
-import '../../../core/utils/constants/constants.dart';
-import '../../../core/utils/widgets/texts/rm_header.dart';
+import 'package:rickandmorty_bloc_intermediate_guide/features/locations/bloc/locations_bloc.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/injection_container.dart'
     as di;
+
+import '../../../core/utils/constants/constants.dart';
+import '../../../core/utils/widgets/texts/rm_header.dart';
 import '../widgets/rm_locations_card.dart';
 
 class LocationsScreen extends StatefulWidget {
@@ -18,6 +19,11 @@ class LocationsScreen extends StatefulWidget {
 }
 
 final ScrollController _scrollController = ScrollController();
+
+@override
+dispose() {
+  _scrollController.dispose();
+}
 
 class _LocationsScreenState extends State<LocationsScreen> {
   @override
@@ -37,7 +43,7 @@ class _LocationsScreenState extends State<LocationsScreen> {
               return const RmFailed();
 
             default:
-              return const SizedBox();
+              return body(state);
           }
         },
       ),

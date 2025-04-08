@@ -1,14 +1,18 @@
 import 'dart:async';
-import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/features/episodes/repositories/episodes_repository.dart';
+
 import '../models/episode.dart';
+
 part 'episodes_event.dart';
 part 'episodes_state.dart';
 
 enum EpisodesStatus {
   initial,
   loading,
+  detailLoading,
   loaded,
   failed,
 }
@@ -53,7 +57,7 @@ class EpisodesBloc extends Bloc<EpisodesEvent, EpisodesState> {
   FutureOr<void> _getEpisodeDetail(
       GetEpisodeDetail event, Emitter<EpisodesState> emit) async {
     if (state.episodes[event.index].characterDetail == null) {
-      emit(state.copyWith(status: EpisodesStatus.loading));
+      emit(state.copyWith(status: EpisodesStatus.detailLoading));
       final result = await repository.getEpisodeDetail(
           episode: state.episodes[event.index]);
       result.fold((failed) {

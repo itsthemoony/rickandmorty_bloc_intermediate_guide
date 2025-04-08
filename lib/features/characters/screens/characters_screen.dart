@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/core/utils/constants/constants.dart';
+import 'package:rickandmorty_bloc_intermediate_guide/core/utils/widgets/failed/rm_failed.dart';
+import 'package:rickandmorty_bloc_intermediate_guide/core/utils/widgets/loading/rm_loading.dart';
+import 'package:rickandmorty_bloc_intermediate_guide/core/utils/widgets/texts/rm_header.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/features/characters/bloc/characters_bloc.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/features/characters/bloc/characters_state.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/features/characters/screens/characters_detail_screen.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/features/characters/widgets/rm_characters_card.dart';
-import 'package:rickandmorty_bloc_intermediate_guide/core/utils/widgets/failed/rm_failed.dart';
-import 'package:rickandmorty_bloc_intermediate_guide/core/utils/widgets/texts/rm_header.dart';
-import 'package:rickandmorty_bloc_intermediate_guide/core/utils/widgets/loading/rm_loading.dart';
+
 import '../../../core/utils/widgets/buttons/rm_floating_action_button.dart';
 import '../../../injection_container.dart' as di;
 
@@ -50,7 +51,7 @@ class _CharactersScreenState extends State<CharactersScreen> {
             return const RmFailed();
 
           default:
-            return const SizedBox();
+            return body(state);
         }
       }),
     );

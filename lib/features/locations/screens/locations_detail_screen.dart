@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/core/utils/constants/constants.dart';
+import 'package:rickandmorty_bloc_intermediate_guide/core/utils/widgets/boxs/rm_header_box.dart';
+import 'package:rickandmorty_bloc_intermediate_guide/core/utils/widgets/failed/rm_failed.dart';
+import 'package:rickandmorty_bloc_intermediate_guide/core/utils/widgets/loading/rm_loading.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/features/characters/widgets/rm_characters_card.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/features/locations/bloc/locations_bloc.dart';
-import 'package:rickandmorty_bloc_intermediate_guide/core/utils/widgets/failed/rm_failed.dart';
-import 'package:rickandmorty_bloc_intermediate_guide/core/utils/widgets/boxs/rm_header_box.dart';
-import 'package:rickandmorty_bloc_intermediate_guide/core/utils/widgets/loading/rm_loading.dart';
-import '../../../core/utils/widgets/appbar/rm_appbar.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/injection_container.dart'
     as di;
+
+import '../../../core/utils/widgets/appbar/rm_appbar.dart';
 
 class LocationsDetailScreen extends StatefulWidget {
   final int id;
@@ -19,13 +20,7 @@ class LocationsDetailScreen extends StatefulWidget {
 }
 
 class _LocationsDetailScreenState extends State<LocationsDetailScreen> {
-  late ScrollController _scrollController;
-
-  @override
-  void initState() {
-    _scrollController = ScrollController();
-    super.initState();
-  }
+  final ScrollController _scrollController = ScrollController();
 
   @override
   void dispose() {
@@ -41,7 +36,7 @@ class _LocationsDetailScreenState extends State<LocationsDetailScreen> {
         builder: (context, state) {
           final location = state.locations[widget.id];
           switch (state.status) {
-            case LocationsStatus.loading:
+            case LocationsStatus.detailLoading:
               return RMLoading(title: location.name);
 
             case LocationsStatus.loaded:
@@ -51,7 +46,7 @@ class _LocationsDetailScreenState extends State<LocationsDetailScreen> {
               return const RmFailed();
 
             default:
-              return const SizedBox();
+              return body(context, state);
           }
         },
       ),
@@ -107,7 +102,9 @@ class _LocationsDetailScreenState extends State<LocationsDetailScreen> {
               ),
               itemBuilder: (context, index) {
                 return RMCharactersCard(
-                    index: index, character: location.residentsDetail![index]);
+                  index: index,
+                  character: location.residentsDetail![index],
+                );
               },
             ),
           ],

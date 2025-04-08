@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/core/utils/constants/constants.dart';
-import 'package:rickandmorty_bloc_intermediate_guide/features/characters/bloc/characters_bloc.dart';
-import 'package:rickandmorty_bloc_intermediate_guide/features/characters/bloc/characters_state.dart';
-import 'package:rickandmorty_bloc_intermediate_guide/features/characters/models/character.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/core/utils/widgets/appbar/rm_appbar.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/core/utils/widgets/failed/rm_failed.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/core/utils/widgets/loading/rm_loading.dart';
+import 'package:rickandmorty_bloc_intermediate_guide/features/characters/bloc/characters_bloc.dart';
+import 'package:rickandmorty_bloc_intermediate_guide/features/characters/bloc/characters_state.dart';
+import 'package:rickandmorty_bloc_intermediate_guide/features/characters/models/character.dart';
+
 import '../../../core/utils/widgets/boxs/rm_header_box.dart';
 import '../../../injection_container.dart' as di;
 
@@ -26,7 +27,7 @@ class _CharactersDetailScreenState extends State<CharactersDetailScreen> {
         builder: (context, state) {
           final character = state.characters[widget.id];
           switch (state.status) {
-            case CharactersStatus.loading:
+            case CharactersStatus.detailLoading:
               return RMLoading(title: character.name);
 
             case CharactersStatus.loaded:

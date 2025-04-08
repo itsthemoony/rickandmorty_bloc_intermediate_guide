@@ -9,6 +9,7 @@ part 'locations_state.dart';
 enum LocationsStatus {
   initial,
   loading,
+  detailLoading,
   loaded,
   failed,
 }
@@ -51,7 +52,7 @@ class LocationsBloc extends Bloc<LocationsEvent, LocationsState> {
   FutureOr<void> _getLocationDetails(
       GetLocationDetails event, Emitter<LocationsState> emit) async {
     if (state.locations[event.index].residentsDetail == null) {
-      emit(state.copyWith(status: LocationsStatus.loading));
+      emit(state.copyWith(status: LocationsStatus.detailLoading));
       final result =
           await repository.getLocationDetail(state.locations[event.index]);
       result.fold((failed) {

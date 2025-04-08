@@ -1,12 +1,16 @@
 import 'dart:async';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/features/characters/repositories/characters_repository.dart';
+
 import 'characters_state.dart';
+
 part 'characters_event.dart';
 
 enum CharactersStatus {
   initial,
   loading,
+  detailLoading,
   loaded,
   failed,
 }
@@ -52,7 +56,7 @@ class CharactersBloc extends Bloc<CharactersEvent, CharactersState> {
   FutureOr<void> _getCharacterDetail(
       GetCharacterDetail event, Emitter<CharactersState> emit) async {
     if (state.characters[event.index].episodeDetail == null) {
-      emit(state.copyWith(status: CharactersStatus.loading));
+      emit(state.copyWith(status: CharactersStatus.detailLoading));
       final result = await repository.getCharacterDetail(
           character: state.characters[event.index]);
       result.fold((failed) {

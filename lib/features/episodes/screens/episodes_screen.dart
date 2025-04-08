@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:rickandmorty_bloc_intermediate_guide/features/episodes/bloc/episodes_bloc.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/core/utils/widgets/buttons/rm_floating_action_button.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/core/utils/widgets/failed/rm_failed.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/core/utils/widgets/loading/rm_loading.dart';
+import 'package:rickandmorty_bloc_intermediate_guide/features/episodes/bloc/episodes_bloc.dart';
+import 'package:rickandmorty_bloc_intermediate_guide/injection_container.dart'
+    as di;
+
 import '../../../core/utils/constants/constants.dart';
 import '../../../core/utils/widgets/texts/rm_header.dart';
 import '../widgets/episodes_card.dart';
-import 'package:rickandmorty_bloc_intermediate_guide/injection_container.dart'
-    as di;
 
 class EpisodesScreen extends StatefulWidget {
   const EpisodesScreen({super.key});
@@ -18,12 +19,7 @@ class EpisodesScreen extends StatefulWidget {
 }
 
 class _EpisodesScreenState extends State<EpisodesScreen> {
-  late ScrollController _scrollController;
-  @override
-  void initState() {
-    _scrollController = ScrollController();
-    super.initState();
-  }
+  final ScrollController _scrollController = ScrollController();
 
   @override
   void dispose() {
@@ -48,7 +44,7 @@ class _EpisodesScreenState extends State<EpisodesScreen> {
               return const RmFailed();
 
             default:
-              return const SizedBox();
+              return body(state);
           }
         },
       ),
