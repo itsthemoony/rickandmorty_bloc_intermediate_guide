@@ -2,12 +2,14 @@ import 'package:fpdart/fpdart.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/features/episodes/data_sources/remote_data_sources/episodes_remote_date_source.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/features/episodes/models/episode.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/features/episodes/repositories/episodes_repository.dart';
+import 'package:rickandmorty_bloc_intermediate_guide/injection_container.dart';
+
 import '../bloc/episodes_bloc.dart';
 
 class EpisodesRepositoryImp extends EpisodesRepository {
-  final EpisodesRemoteDataSource remoteDataSource;
+  final EpisodesRemoteDataSource remoteDataSource =
+      sl.get<EpisodesRemoteDataSource>();
 
-  EpisodesRepositoryImp({required this.remoteDataSource});
   @override
   Future<Either<EpisodesStatus, List<Episode>>> getAllEpisodes(
       {required int pageIndex}) async {

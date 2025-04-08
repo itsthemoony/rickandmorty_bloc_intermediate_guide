@@ -1,15 +1,16 @@
 import 'dart:io';
+
+import 'package:dio/dio.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/core/utils/constants/urls/rm_urls.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/features/characters/bloc/characters_bloc.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/features/characters/data_sources/remote_data_source/characters_remote_data_source.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/features/characters/models/character.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/features/episodes/models/episode.dart';
-import 'package:dio/dio.dart';
+import 'package:rickandmorty_bloc_intermediate_guide/injection_container.dart';
 
 class CharactersRemoteDataSourceImp extends CharactersRemoteDataSource {
-  final Dio dio;
-  CharactersRemoteDataSourceImp({required this.dio});
+  final Dio dio = sl.get<Dio>();
   @override
   Future<Either<CharactersStatus, List<Character>>> getAllCharacters(
       int pageIndex) async {

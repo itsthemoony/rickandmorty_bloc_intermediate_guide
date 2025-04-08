@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/features/episodes/repositories/episodes_repository.dart';
+import 'package:rickandmorty_bloc_intermediate_guide/injection_container.dart';
 
 import '../models/episode.dart';
 
@@ -18,9 +19,9 @@ enum EpisodesStatus {
 }
 
 class EpisodesBloc extends Bloc<EpisodesEvent, EpisodesState> {
-  final EpisodesRepository repository;
+  final EpisodesRepository repository = sl.get<EpisodesRepository>();
   int currentPage = 1;
-  EpisodesBloc({required this.repository}) : super(EpisodesState.initial()) {
+  EpisodesBloc() : super(EpisodesState.initial()) {
     on<GetAllEpisodes>(_getAllEpisodes);
     on<GetMoreEpisodes>(_getMoreEpisodes);
     on<GetEpisodeDetail>(_getEpisodeDetail);

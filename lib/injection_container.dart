@@ -14,15 +14,15 @@ import 'package:rickandmorty_bloc_intermediate_guide/features/locations/bloc/loc
 import 'package:rickandmorty_bloc_intermediate_guide/features/locations/data_sources/remote_data_source/locations_remote_data_source.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/features/locations/data_sources/remote_data_source/locations_remote_data_source_imp.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/features/locations/repositories/locations_repository_imp.dart';
+
 import 'features/episodes/bloc/episodes_bloc.dart';
 import 'features/locations/repositories/locations_repository.dart';
 
 final sl = GetIt.instance;
 
 Future<void> initializeDependencies() async {
-  final Dio dio = Dio();
-  sl.registerLazySingleton(() => dio);
-  initFeatures();
+  sl.registerLazySingleton(() => Dio());
+  await initFeatures();
 }
 
 Future<void> initFeatures() async {
@@ -30,29 +30,27 @@ Future<void> initFeatures() async {
   sl.registerLazySingleton(() => MainCubit());
 
   // Characters Feature
-  sl.registerLazySingleton(() => CharactersBloc(repository: sl.call()));
+  sl.registerLazySingleton(() => CharactersBloc());
 
   sl.registerLazySingleton<CharactersRepository>(
-      () => CharactersRepositoryImp(remoteDataSource: sl.call()));
+      () => CharactersRepositoryImp());
 
   sl.registerLazySingleton<CharactersRemoteDataSource>(
-      () => CharactersRemoteDataSourceImp(dio: sl.call()));
+      () => CharactersRemoteDataSourceImp());
 
   // Locations Feature
-  sl.registerLazySingleton(() => LocationsBloc(repository: sl.call()));
+  sl.registerLazySingleton(() => LocationsBloc());
 
-  sl.registerLazySingleton<LocationsRepository>(
-      () => LocationsRepositoryImp(remoteDataSource: sl.call()));
+  sl.registerLazySingleton<LocationsRepository>(() => LocationsRepositoryImp());
 
   sl.registerLazySingleton<LocationsRemoteDataSource>(
-      () => LocationsRemoteDataSourceImp(dio: sl.call()));
+      () => LocationsRemoteDataSourceImp());
 
 // Episodes Feature
-  sl.registerLazySingleton(() => EpisodesBloc(repository: sl.call()));
+  sl.registerLazySingleton(() => EpisodesBloc());
 
-  sl.registerLazySingleton<EpisodesRepository>(
-      () => EpisodesRepositoryImp(remoteDataSource: sl.call()));
+  sl.registerLazySingleton<EpisodesRepository>(() => EpisodesRepositoryImp());
 
   sl.registerLazySingleton<EpisodesRemoteDataSource>(
-      () => EpisodesRemoteDataSourceImp(dio: sl.call()));
+      () => EpisodesRemoteDataSourceImp());
 }

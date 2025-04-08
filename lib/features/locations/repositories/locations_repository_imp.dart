@@ -1,13 +1,15 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/features/locations/repositories/locations_repository.dart';
+import 'package:rickandmorty_bloc_intermediate_guide/injection_container.dart';
+
 import '../bloc/locations_bloc.dart';
 import '../data_sources/remote_data_source/locations_remote_data_source.dart';
 import '../models/location.dart';
 
 class LocationsRepositoryImp extends LocationsRepository {
-  final LocationsRemoteDataSource remoteDataSource;
+  final LocationsRemoteDataSource remoteDataSource =
+      sl.get<LocationsRemoteDataSource>();
 
-  LocationsRepositoryImp({required this.remoteDataSource});
   @override
   Future<Either<LocationsStatus, List<Location>>> getAllLocations(
       {required int pageIndex}) async {

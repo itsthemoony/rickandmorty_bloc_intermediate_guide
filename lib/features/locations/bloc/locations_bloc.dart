@@ -1,8 +1,12 @@
 import 'dart:async';
+
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/features/locations/repositories/locations_repository.dart';
+import 'package:rickandmorty_bloc_intermediate_guide/injection_container.dart';
+
 import '../models/location.dart';
+
 part 'locations_event.dart';
 part 'locations_state.dart';
 
@@ -15,9 +19,9 @@ enum LocationsStatus {
 }
 
 class LocationsBloc extends Bloc<LocationsEvent, LocationsState> {
-  final LocationsRepository repository;
+  final LocationsRepository repository = sl.get<LocationsRepository>();
   int currentPage = 1;
-  LocationsBloc({required this.repository}) : super(LocationsState.initial()) {
+  LocationsBloc() : super(LocationsState.initial()) {
     on<GetAllLocations>(_getAllLocations);
     on<GetMoreLocations>(_getMoreLocation);
     on<GetLocationDetails>(_getLocationDetails);

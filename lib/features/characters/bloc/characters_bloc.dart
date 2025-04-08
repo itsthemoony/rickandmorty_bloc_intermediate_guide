@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/features/characters/repositories/characters_repository.dart';
+import 'package:rickandmorty_bloc_intermediate_guide/injection_container.dart';
 
 import 'characters_state.dart';
 
@@ -16,10 +17,9 @@ enum CharactersStatus {
 }
 
 class CharactersBloc extends Bloc<CharactersEvent, CharactersState> {
-  final CharactersRepository repository;
+  final CharactersRepository repository = sl.get<CharactersRepository>();
   int currentPage = 1;
-  CharactersBloc({required this.repository})
-      : super(CharactersState.initial()) {
+  CharactersBloc() : super(CharactersState.initial()) {
     on<GetAllCharacters>(_getAllCharacter);
     on<GetMoreCharacter>(_getMoreCharacter);
     on<GetCharacterDetail>(_getCharacterDetail);

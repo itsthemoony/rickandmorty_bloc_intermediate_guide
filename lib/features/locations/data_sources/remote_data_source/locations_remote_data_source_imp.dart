@@ -1,18 +1,18 @@
 import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/features/characters/models/character.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/features/locations/data_sources/remote_data_source/locations_remote_data_source.dart';
 import 'package:rickandmorty_bloc_intermediate_guide/features/locations/models/location.dart';
+import 'package:rickandmorty_bloc_intermediate_guide/injection_container.dart';
+
 import '../../../../core/utils/constants/urls/rm_urls.dart';
 import '../../bloc/locations_bloc.dart';
 
-
-
 class LocationsRemoteDataSourceImp extends LocationsRemoteDataSource {
-  final Dio dio;
+  final Dio dio = sl.get<Dio>();
 
-  LocationsRemoteDataSourceImp({required this.dio});
   @override
   Future<Either<LocationsStatus, List<Location>>> getAllLocations(
       int pageIndex) async {
